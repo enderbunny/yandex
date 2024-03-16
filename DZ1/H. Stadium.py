@@ -1,11 +1,31 @@
-arr = list(map(int, input().split(' ')))
+from datetime import datetime
 
-L = arr[0]
-x1 = arr[1]
-v1 = arr[2]
-x2 = arr[3]
-v2 = arr[4]
+day_week = {
+    'Monday': 52,
+    'Tuesday': 52,
+    'Wednesday': 52,
+    'Thursday': 52,
+    'Friday': 52,
+    'Saturday': 52,
+    'Sunday': 52,
+}
 
-x = (v1 - v2) / (x1 * v2 - x2 * v1)
+n = int(input())
+year = int(input())
 
-print(x / v1)
+while n != 0:
+    data = input() + " " + str(year)
+    data = datetime.strptime(data, "%d %B %Y")
+    day_week[data.strftime("%A")] -= 1
+    n -= 1
+
+first_day = input()
+day_week[first_day] += 1
+
+if (year % 4 == 0) and (year % 100 != 0) or (year % 400 == 0):
+    dec30 = datetime.strptime("30/12/" + str(year), "%d/%m/%Y")
+    day_week[dec30.strftime("%A")] += 1
+
+maax = max(day_week, key=lambda x: day_week[x])
+miin = min(day_week, key=lambda x: day_week[x])
+print(maax, miin)
