@@ -18,4 +18,8 @@ for i in range(len(sumN)):
             attack = sumN[i] + sumM[j] - a[i][j]
             cor = [i+1, j+1]
 
+cor[0] = sumN.index(max(sumN)) + 1
+cor[1] = sumM.index(max(sumM)) + 1
+
+
 print(' '.join(map(str, cor)))
