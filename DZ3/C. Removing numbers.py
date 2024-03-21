@@ -9,3 +9,5 @@ for el in un_a1:
         count = a.count(el) + a.count(el+1)
 
 print(n - count)
+
+# arr = [a.count(el) + a.count(el+1) for el in a]
