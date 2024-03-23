@@ -1,12 +1,13 @@
-n = int(input())
-a = list(map(int, input().split()))
+from collections import Counter
 
-un_a1 = list(set(a))
+n = int(input())
+a = Counter(map(int, input().split()))
+
 count = 0
 
-for el in un_a1:
-    if count < a.count(el) + a.count(el+1):
-        count = a.count(el) + a.count(el+1)
+for el in a:
+    if count < a[el] + a[el+1]:
+        count = a[el] + a[el+1]
 
 print(n - count)
 
