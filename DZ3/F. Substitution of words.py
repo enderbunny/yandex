@@ -1,10 +1,14 @@
-w_list = tuple(input().split())
+w_list = set(input().split())
 text = input().split()
 
-for i in range(len(text)):
-    print(text)
-    for w in w_list:
-        if text[i].startswith(w):
-            text[i] = w
+res = []
+for w in text:
+    for i in range(1, len(w)):
+        start = w[:i]
+        if start in w_list:
+            res.append(start)
+            break
+    else:
+        res.append(w)
 
 print(' '.join(map(str, text)))
